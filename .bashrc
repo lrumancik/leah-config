@@ -13,7 +13,23 @@ alias gcp='git cherry-pick'
 alias commit-broken='git bisect good'
 alias commit-good='git bisect bad'
 
-unalias search &>/dev/null | true
+
+alias chrome='(google-chrome&)&>> /dev/null'
+alias calc='(gnome-calculator &)&>> /dev/null'
+alias zoom='(zoom&)&>> /dev/null'
+alias virtualbox='(virtualbox&)&>> /dev/null'
+alias freeze_top='top -n 1 b'
+alias please='sudo $(history -p !!)'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+function open () {
+  nohup xdg-open "$*" > /dev/null 2>&1
+}
+
+
 search() {
     flags="-rIn"
 

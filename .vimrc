@@ -100,12 +100,12 @@ set listchars=tab:>-
 " Show trailing whitespace and spaces before a tab:
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
 
-call plug#begin()
+" call plug#begin()
 
 " List your plugins here
 "Plug 'ojroques/vim-oscyank'
 
-call plug#end()
+" call plug#end()
 
 set mouse=a
 map <C-q> <C-W>q
