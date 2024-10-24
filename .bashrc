@@ -172,4 +172,23 @@ check_no_changes_rebase() {
     git diff $branch_orig $branch_rebased -- $file
   done
 }
+wait_build() {
+	if [[ $# -ne 1 ]]; then
+		echo "please provide file to wait on"
+		return 1
+	fi
+	file="$1"
+	last_mod=0
+	if [[ -e "$file" ]]; then
+		last_mod=$(stat --printf="%Y" "$file")
+	fi
+	#echo "last_mod=$last_mod"
+	while [ ! -e "$file" ]; do sleep 5s; done
 
+	current_mod=$(stat --printf="%Y" "$file")
+	while [ $current_mod -eq $last_mod ] ; do
+		sleep 5s
+		#echo "current_mod=$current_mod"
+		current_mod=$(stat --printf="%Y" "$file")
+	done
+}
