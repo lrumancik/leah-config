@@ -1,0 +1,30 @@
+[user]
+	name = Leah Rumancik
+	email = leah.rumancik@gmail.com
+#[http]
+#	cookiefile =
+#[sendemail]
+#	smtpEncryption =
+#	smtpServer =
+#	smtpUser =
+#	smtpServerPort =
+#	smtppass =
+[color]
+	ui = auto
+[rerere]
+	enabled = false
+[core]
+	commitGraph = true
+[gc]
+	writeCommitGraph = true
+[alias]
+ol = show -s --abbrev-commit --abbrev=12 --pretty=format:\"%h (\\\"%s\\\")%n\"
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+[merge]
+	conflictstyle = diff3
+[grep]
+	linenumber = true
+[diff]
+	context = 5
+	interHunkContext = 15
